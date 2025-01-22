@@ -2,6 +2,11 @@
 session_start();
 
 if (isset($_POST['reset'])) {
+    session_destroy(); 
+    header("Location: " . $_SERVER['PHP_SELF']);
+    exit;
+}
+if (!isset($_SESSION['comments'])) {
     $_SESSION['comments'] = [];
 }
 
@@ -78,12 +83,15 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
                 <p>I disagree with some points, but overall a good read.</p>
             </div>
             <?php
-            for ($i = 0; $i < count($_SESSION['comments']); $i++) {
-                echo '<div class="comment">';
-                echo '<strong>' . $_SESSION['comments'][$i]['name'] . '</strong>';
-                echo '<p>' . $_SESSION['comments'][$i]['comment'] . '</p>';
-                echo '</div>';
+            if ($_SESSION['comments']) {
+                for ($i = 0; $i < count($_SESSION['comments']); $i++) {
+                    echo '<div class="comment">';
+                    echo '<strong>' . $_SESSION['comments'][$i]['name'] . '</strong>';
+                    echo '<p>' . $_SESSION['comments'][$i]['comment'] . '</p>';
+                    echo '</div>';
+                }
             }
+            
             ?>
         </div>
     </div>
