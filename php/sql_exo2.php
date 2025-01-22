@@ -32,13 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $message = "Bien joué vous avez trouvé la ville de " . $row['superheros'] . " - " . $row['ville'];
                 } else {
                     $_SESSION['challenge_success'] = false;
-                    $message = "$sql Ville : " . $row['ville'] . " - Superhéros : " . $row['superheros'];
+                    $message = "Ville : " . $row['ville'] . " - Superhéros : " . $row['superheros'];
                 }
             } else {
                 $error_code = mysqli_errno($conn);
                 $error_message = mysqli_error($conn);
                 $_SESSION['challenge_success'] = false;
-                $message = "Erreur SQL $sql: Code $error_code - $error_message";
+                $message = "Erreur SQL : Code $error_code - $error_message";
             }
         } else {
             $_SESSION['challenge_success'] = false;

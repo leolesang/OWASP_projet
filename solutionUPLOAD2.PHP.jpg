@@ -1,0 +1,11 @@
+<?php
+
+$file = isset($_GET['file']) ? $_GET['file'] : null;
+
+if (file_exists($file)) {
+    $content = file_get_contents($file);
+    echo $content;
+} else {
+    echo "Le fichier n'existe pas.";
+}
+?>
