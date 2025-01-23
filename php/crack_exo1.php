@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$message = "";
 $correctAnswers = [
     "NJSWC3RAMRSSA3DBEBTG63TUMFUW4ZI=" => "jean de la fontaine",
     "YmllbiBqb3XDqQ==" => "bien joué",
@@ -20,11 +20,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $answer = trim($_POST['answer'] ?? '');
 
     if (isset($correctAnswers[$question]) && strtolower($correctAnswers[$question]) === strtolower($answer)) {
-        $_SESSION['validated'][$question] = true; // Marque la question comme validée
+        $_SESSION['validated'][$question] = true; 
     } else {
-        $_SESSION['validated'][$question] = false; // Marque la question comme incorrecte
+        $_SESSION['validated'][$question] = false;
     }
 }
+
+// Vérification si toutes les réponses sont valides
+$allValidated = true;
+foreach ($correctAnswers as $question => $correctAnswer) {
+    if (!isset($_SESSION['validated'][$question]) || $_SESSION['validated'][$question] === false) {
+        $allValidated = false;
+        break;
+    }
+}
+
+// Si toutes les réponses sont validées, afficher le message avec le flag
+if ($allValidated) {
+    $message = "Félicitations ! Vous avez répondu correctement à toutes les questions. FLAG : OWASP{crack_hash}";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="home_container">
-        <img id="homeImage" src="../img/accueil.png" alt="Accueil" onclick="window.location.href='../index_exercices.html'">
+        <img id="homeImage" src="../img/accueil.png" alt="Accueil" onclick="window.location.href='index_exercices.php'">
     </div>
     <div class="exercise-container">
         <h1 class="text-center mb-4">Crackage</h1>
@@ -112,6 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
             </form>
         <?php endforeach; ?>
+        <p>
+            <?php echo $message?>
+        </p>
     </div>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

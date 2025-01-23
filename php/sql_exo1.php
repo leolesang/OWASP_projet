@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (mysqli_num_rows($result) > 0) {
                 $_SESSION['challenge_success'] = true;
-                $message = "Authentification réussie !";
+                $message = "Authentification réussie ! FLAG : OWASP{basique_sql}";
             } else {
                 $_SESSION['challenge_success'] = false;
                 $message = "Échec de l'authentification. Essayez encore.";

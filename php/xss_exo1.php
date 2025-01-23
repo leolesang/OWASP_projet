@@ -45,10 +45,23 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
             border: 1px solid #e0e0e0;
             border-radius: 5px;
         }
+        .home_container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center; 
+            width: 100%;
+            padding: 10px;
+        }
+        .home_container img {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 <body>
-
+    <div class="home_container">
+        <img id="homeImage" src="../img/accueil.png" alt="Accueil" onclick="window.location.href='index_exercices.php'">
+    </div>
     <div class="container">
         <div class="comment-section">
             <h2 class="mb-4">Leave a Comment</h2>

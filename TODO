@@ -1,8 +1,11 @@
 
+
+
+- Recuperer flag pour XSS, LFI, Upload ...
+
 - Corriger la faille id sur les solutions
 - RCE ? outdated module
 - buffer overflow (terminal)
 - Log poisoning 
 - Quizz
-- Login au debut pour gérer les challenges validé
 - Systeme de niveau (challenge bloqué tant que le niv precedent est pas effectué)

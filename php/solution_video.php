@@ -64,9 +64,10 @@ $conn->close();
                     <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
                 </svg>
             </a>
-            <a class="py-2 d-none d-md-inline-block" href="../index_explications.html">Explications</a>
-            <a class="py-2 d-none d-md-inline-block" href="../index_exercices.html">Exercices</a>
-            <a class="py-2 d-none d-md-inline-block" href="../index_solutions.html">Solutions</a>
+            <a class="py-2 d-none d-md-inline-block" href="index_exercices.php"></a>
+            <a class="py-2 d-none d-md-inline-block" href="index_exercices.php">Exercices</a>
+            <a class="py-2 d-none d-md-inline-block" href="index_exercices.php"></a>
+            <a class="py-2 d-none d-md-inline-block" href="logout.php">Déconnexion</a>
         </div>
     </nav>
 

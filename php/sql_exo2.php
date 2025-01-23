@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $row = mysqli_fetch_assoc($result);
                 if ($row['ville'] == 'Zigma_B') {
                     $_SESSION['challenge_success'] = true;
-                    $message = "Bien joué vous avez trouvé la ville de " . $row['superheros'] . " - " . $row['ville'];
+                    $message = "Bien joué FLAG : OWASP{SQL_UNION_trop_bien}";
                 } else {
                     $_SESSION['challenge_success'] = false;
                     $message = "Ville : " . $row['ville'] . " - Superhéros : " . $row['superheros'];
