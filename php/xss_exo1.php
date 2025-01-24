@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_POST['reset'])) {
-    session_destroy(); 
+    unset($_SESSION['comments']); 
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }

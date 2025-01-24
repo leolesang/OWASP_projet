@@ -10,7 +10,7 @@ $correctAnswers = [
 ];
 
 if (isset($_POST['reset'])) {
-    session_destroy(); 
+    unset($_SESSION['validated']); 
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }

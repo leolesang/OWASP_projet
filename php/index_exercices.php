@@ -30,7 +30,6 @@ while ($row = $validatedExosResult->fetch_assoc()) {
 }
 
 $stmt->close();
-
 // Vérifiez si un flag est soumis et si l'exercice existe
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET['id'])) {
     $submittedFlag = trim($_GET['flag']);
@@ -123,7 +122,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
         <div class="col-md-5 p-lg-5 mx-auto my-5">
             <h1 class="display-4 font-weight-normal">Exercices
             </h1>
-            <p class="lead font-weight-normal">Sur cette page, vous trouverez différents types d'exercices concernant le top 10 OWASP.</p>
+            <p class="lead font-weight-normal">Sur cette page, vous trouverez différents types d'exercices concernant le top 10 OWASP.
+                Dans chaque exercice le FLAG est de type OWASP{...}.
+            </p>
         </div>
         <div class="product-device box-shadow d-none d-md-block"></div>
         <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
@@ -200,9 +201,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                 </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                        <input type="hidden" name="id" value="2">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -246,9 +248,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                    <input type="hidden" name="id" value="3">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -286,9 +289,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                 </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                    <input type="hidden" name="id" value="4">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -331,9 +335,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                        <input type="hidden" name="id" value="5">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -371,9 +376,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                 </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                    <input type="hidden" name="id" value="6">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -415,9 +421,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                    <input type="hidden" name="id" value="7">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -442,7 +449,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </a>
             <div class="d-flex justify-content-center align-items-center">
                 <h2 class="display-5" style="color: black; margin-right: 10px;">Upload 2</h2>
-                <img src="../img/lvl1.png" alt="level 3" style="width: 30px; height: 30px;">
+                <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
                 <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
             </div>
             <p class="lead" style="color: black;">...</p>
@@ -455,9 +462,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                 </div>
             <div class="text-center">
                 <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
-                <form method="POST">
+                <form method="GET">
                     <div class="mb-3">
-                        <input type="text" style="margin-top: 10px;" class="form-control" id="file" name="file" placeholder="Entrer votre flag">
+                    <input type="hidden" name="id" value="8">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
                 </form>
@@ -472,6 +480,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
 </div>
 
    
-    
+<div class="d-flex justify-content-center w-100 my-md-3 pl-md-3 mx-auto">
+    <div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="border-radius: 15px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; width: 45%;">
+        <div class="my-3 py-3 position-relative">
+            <?php if (in_array("9", $validatedExos)): ?>
+                <img src="../img/valide.png" alt="Validation" style="position: absolute; top: 10px; left: 10px; width: 40px; height: 40px;">
+            <?php else: ?>
+                <img src="../img/croix.png" alt="Non validé" style="position: absolute; top: 0px; left: 10px; width: 60px; height: 60px;">
+            <?php endif; ?>
+            <a href="../misconfig_exo1.html">
+                <img src="../img/demarrer2.png" alt="Démarrer l'exercice" style="position: absolute; top: 10px; right: 10px; width: 60px; height: 60px;">
+            </a>
+            <div class="d-flex justify-content-center align-items-center">
+                <h2 class="display-5" style="color: black; margin-right: 10px;">Misconfiguration 1</h2>
+                <img src="../img/lvl1.png" alt="level 1" style="width: 30px; height: 30px;">
+                <span style="color: rgb(69, 251, 14);"> &nbspeasy</span>
+            </div>
+            <p class="lead" style="color: black;">...</p>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <div class="text-center">
+                <a href="">
+                <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
+                </a>
+            </div>
+            <div class="text-center">
+                <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
+                <form method="GET">
+                    <div class="mb-3">
+                    <input type="hidden" name="id" value="9">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
+                </form>
+            </div>
+            <div class="text-center">
+                <a href="solution_video.php?id=1">
+                <img src="../img/solution.png" alt="Solution" style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
+                </a>    
+            </div>
+        </div>
+    </div>
+
+    <div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="border-radius: 15px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; width: 45%;">
+        <div class="my-3 py-3 position-relative">
+            <?php if (in_array("10", $validatedExos)): ?>
+                <img src="../img/valide.png" alt="Validation" style="position: absolute; top: 10px; left: 10px; width: 40px; height: 40px;">
+            <?php else: ?>
+                <img src="../img/croix.png" alt="Non validé" style="position: absolute; top: 0px; left: 10px; width: 60px; height: 60px;">
+            <?php endif; ?>
+            <a href="upload_exo2.php">
+                <img src="../img/demarrer2.png" alt="Démarrer l'exercice" style="position: absolute; top: 10px; right: 10px; width: 60px; height: 60px;">
+            </a>
+            <div class="d-flex justify-content-center align-items-center">
+                <h2 class="display-5" style="color: black; margin-right: 10px;">...</h2>
+                <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
+                <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
+            </div>
+            <p class="lead" style="color: black;">...</p>
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <div class="text-center">
+                <a href="">
+                    <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
+                </a>    
+                </div>
+            <div class="text-center">
+                <img src="../img/monde.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
+                <form method="GET">
+                    <div class="mb-3">
+                    <input type="hidden" name="id" value="10">
+                        <input type="text" style="margin-top: 10px;" class="form-control" id="flag" name="flag" placeholder="Entrer votre flag">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-bottom: 20px;">Valider</button>
+                </form>
+            </div>
+            <div class="text-center">
+                <a href="solution_video.php?id=2">
+                    <img src="../img/solution.png" alt="Solution" style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
+                </a>    
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
