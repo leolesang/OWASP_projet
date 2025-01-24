@@ -529,11 +529,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             <?php else: ?>
                 <img src="../img/croix.png" alt="Non validé" style="position: absolute; top: 0px; left: 10px; width: 60px; height: 60px;">
             <?php endif; ?>
-            <a href="upload_exo2.php">
+            <a href="csrf_exo1.php">
                 <img src="../img/demarrer2.png" alt="Démarrer l'exercice" style="position: absolute; top: 10px; right: 10px; width: 60px; height: 60px;">
             </a>
             <div class="d-flex justify-content-center align-items-center">
-                <h2 class="display-5" style="color: black; margin-right: 10px;">...</h2>
+                <h2 class="display-5" style="color: black; margin-right: 10px;">CSRF 1</h2>
                 <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
                 <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
             </div>
