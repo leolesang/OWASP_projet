@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 21 jan. 2025 à 17:16
--- Version du serveur : 8.0.40
--- Version de PHP : 7.4.26
+-- Généré le : ven. 24 jan. 2025 à 16:15
+-- Version du serveur : 9.1.0
+-- Version de PHP : 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,15 +32,25 @@ CREATE TABLE IF NOT EXISTS `exercices` (
   `id_exercice` int NOT NULL AUTO_INCREMENT,
   `niveau` int DEFAULT NULL,
   `lien` varchar(500) DEFAULT NULL,
+  `flag` varchar(200) NOT NULL,
   PRIMARY KEY (`id_exercice`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `exercices`
 --
 
-INSERT INTO `exercices` (`id_exercice`, `niveau`, `lien`) VALUES
-(1, 1, 'https://www.youtube.com/embed/CgX0-aA0iSE?si=EOePdEiq3KH5kVJY');
+INSERT INTO `exercices` (`id_exercice`, `niveau`, `lien`, `flag`) VALUES
+(1, 1, 'https://www.youtube.com/embed/CgX0-aA0iSE?si=EOePdEiq3KH5kVJY', 'OWASP{basique_sql}'),
+(2, 2, '/', 'OWASP{SQL_UNION_trop_bien}'),
+(3, 1, '/', 'OWASP{LFI_trop_FACILE}'),
+(4, 2, '/', 'OWASP{LFI_bypass_filtre}'),
+(5, 1, '/', 'OWASP{xss_stored_basique}'),
+(6, 1, '/', 'OWASP{crack_hash}'),
+(7, 1, '/', 'OWASP{upload_basique_no_filters}'),
+(8, 2, '/', 'OWASP{upload_filters}'),
+(9, 1, '/', 'OWASP{Attention_MISCONFIG}'),
+(10, 2, '/', 'OWASP{CSRF_token}');
 
 -- --------------------------------------------------------
 
@@ -86,6 +96,53 @@ INSERT INTO `exo2_sql` (`id`, `ville`, `superheros`) VALUES
 (2, 'Lisbonne', 'Thor'),
 (3, 'Zigma_B', 'Jean'),
 (4, 'Madrid', 'Aquaman');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
+  `login` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `user`
+--
+
+INSERT INTO `user` (`id_user`, `login`) VALUES
+(1, 'leo'),
+(4, 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `validation`
+--
+
+DROP TABLE IF EXISTS `validation`;
+CREATE TABLE IF NOT EXISTS `validation` (
+  `id_user` int NOT NULL,
+  `id_exercice` int NOT NULL,
+  PRIMARY KEY (`id_user`,`id_exercice`),
+  KEY `id_exercice` (`id_exercice`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Déchargement des données de la table `validation`
+--
+
+INSERT INTO `validation` (`id_user`, `id_exercice`) VALUES
+(1, 1),
+(1, 2),
+(1, 8),
+(1, 9),
+(4, 8),
+(4, 10);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,9 +2,12 @@
     max-width: 960px;
 }
 
-/*
-   * Custom translucent site header
-   */
+body {
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
 
 .site-header {
     background-color: rgba(0, 0, 0, .85);
