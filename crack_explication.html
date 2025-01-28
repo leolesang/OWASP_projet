@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crackage de Hash et Chiffrement</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .vuln-title {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .example-code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .tool-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #17a2b8;
+            border-radius: 5px;
+            background-color: #e7f5ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .home_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .home_container img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home_container">
+        <img id="homeImage" src="img/accueil.png" alt="Accueil"
+            onclick="window.location.href='php/index_exercices.php'">
+    </div>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Comprendre le Crackage de Hash et de Chiffrement</h1>
+
+        <div class="vuln-title">C'est quoi un hash et un chiffrement ?</div>
+        <br>
+        <p>Un hash est une fonction qui transforme une entrée (texte, fichier, etc.) en une valeur fixe, souvent
+            utilisée pour stocker des mots de passe de manière sécurisée. Le chiffrement, quant à lui, transforme des
+            données en un format illisible, mais réversible grâce à une clé secrète.</p>
+
+        <div class="vuln-title">1. Pourquoi cracker un hash ou un chiffrement ?</div>
+        <br>
+        <p>Le crackage de hash ou de chiffrement est souvent utilisé pour tester la sécurité d'une application, par
+            exemple pour vérifier si des mots de passe faibles peuvent être récupérés. Cela peut aussi être mal utilisé
+            par des attaquants pour voler des informations sensibles.</p>
+
+        <div class="vuln-title">2. Méthodes de crackage</div>
+        <br>
+        <ul>
+            <li><strong>Attaque par dictionnaire :</strong> Tester une liste de mots de passe connus.</li>
+            <li><strong>Attaque brute-force :</strong> Essayer toutes les combinaisons possibles.</li>
+            <li><strong>Attaque par tables arc-en-ciel :</strong> Utiliser des tables pré-calculées pour retrouver un
+                hash.</li>
+        </ul>
+
+        <div class="vuln-title">3. Outils populaires pour le crackage</div>
+        <div class="tool-section">
+            <ul>
+                <li><strong>John the Ripper :</strong> Un outil puissant pour cracker des mots de passe et des hash. <a
+                        href="https://www.openwall.com/john/" target="_blank">Site officiel</a>.</li>
+                <li><strong>Hashcat :</strong> Un outil rapide pour cracker des hash en utilisant le GPU. <a
+                        href="https://hashcat.net/hashcat/" target="_blank">Site officiel</a>.</li>
+                <li><strong>CrackStation :</strong> Un service en ligne pour cracker des hash simples. <a
+                        href="https://crackstation.net/" target="_blank">Site officiel</a>.</li>
+                <li><strong>RainbowCrack :</strong> Génère et utilise des tables arc-en-ciel pour cracker des hash. <a
+                        href="http://project-rainbowcrack.com/" target="_blank">Site officiel</a>.</li>
+            </ul>
+        </div>
+
+        <div class="vuln-title">4. Exemple de hash et tentative de crackage</div>
+        <br>
+        <p>Supposons que nous ayons le hash suivant : <code>5f4dcc3b5aa765d61d8327deb882cf99</code>. Ce hash correspond
+            à un mot de passe MD5 bien connu : <code>password</code>.</p>
+
+        <div class="example-code">
+            <pre><code>hashcat -m 0 -a 0 hash.txt wordlist.txt</code></pre>
+        </div>
+
+        <div class="vuln-title">5. Prévention contre le crackage</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mesure</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Salage des hash</td>
+                    <td>Ajouter une valeur unique ("sel") avant de hasher pour rendre les attaques par tables
+                        arc-en-ciel inefficaces.</td>
+                </tr>
+                <tr>
+                    <td>Utilisation de fonctions de hash sécurisées</td>
+                    <td>Privilégier des algorithmes comme bcrypt, Argon2 ou PBKDF2 au lieu de MD5 ou SHA-1.</td>
+                </tr>
+                <tr>
+                    <td>Politique de mots de passe forts</td>
+                    <td>Exiger des mots de passe longs et complexes pour réduire les chances de succès des attaques.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center mt-5">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='php/qcm_hash.php'">QCM</button>
+        </div>
+    </div>
+</body>
+
+</html>

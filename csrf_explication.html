@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vulnérabilités CSRF</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .vuln-title {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .example-code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .patch-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            background-color: #e9f7ef;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .home_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .home_container img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home_container">
+        <img id="homeImage" src="img/accueil.png" alt="Accueil"
+            onclick="window.location.href='php/index_exercices.php'">
+    </div>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Comprendre les vulnérabilités CSRF</h1>
+
+        <div class="vuln-title">C'est quoi une faille CSRF ?</div>
+        <p>Une faille CSRF (Cross-Site Request Forgery) permet à un attaquant de forcer un utilisateur authentifié à
+            exécuter une action non désirée sur une application web où il est connecté. Cela peut inclure des actions
+            critiques comme des transferts d'argent ou des modifications de paramètres.</p>
+
+        <div class="vuln-title">1. Exemple d'exploitation d'une faille CSRF</div>
+        <p>Supposons qu'une application bancaire permette de transférer de l'argent via une requête POST :</p>
+        <div class="example-code">
+            <pre><code>&lt;form action="http://banque-exemple.com/transfert" method="POST"&gt;
+    &lt;input type="hidden" name="destinataire" value="123456"&gt;
+    &lt;input type="hidden" name="montant" value="1000"&gt;
+    &lt;button type="submit"&gt;Transférer&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        </div>
+
+        <p>Un attaquant pourrait exploiter cette faille en incitant l'utilisateur à cliquer sur un lien ou à visiter une
+            page malveillante contenant :</p>
+        <div class="example-code">
+            <pre><code>&lt;img src="http://banque-exemple.com/transfert?destinataire=789101&montant=1000" 
+                style="display:none;"&gt;</code></pre>
+        </div>
+
+        <div class="vuln-title">2. Conséquences d'une attaque CSRF</div>
+        <p>Les attaques CSRF peuvent avoir des conséquences graves, telles que :</p>
+        <ul>
+            <li>Transferts non autorisés d'argent.</li>
+            <li>Modification des paramètres d'un compte utilisateur.</li>
+            <li>Suppression de données sensibles.</li>
+        </ul>
+
+        <div class="patch-section">
+            <strong>Patch :</strong>
+            <ul>
+                <li><strong>Implémentation de jetons CSRF :</strong> Ajouter un champ caché avec un jeton unique dans
+                    chaque formulaire.</li>
+                <li><strong>Vérification côté serveur :</strong> Comparer le jeton envoyé par le client avec celui
+                    stocké côté serveur.</li>
+                <li><strong>Utilisation de cookies sécurisés :</strong> Configurer les cookies avec l'attribut
+                    <code>SameSite</code> pour empêcher leur envoi sur des requêtes intersites.
+                </li>
+            </ul>
+        </div>
+
+        <div class="text-center mt-5">
+            <button type="button" class="btn btn-primary" onclick="window.location.href='php/qcm_csrf.php'">QCM</button>
+        </div>
+    </div>
+</body>
+
+</html>

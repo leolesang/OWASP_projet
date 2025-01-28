@@ -1,8 +1,14 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 if (isset($_POST['reset'])) {
-    unset($_SESSION['comments']); 
+    unset($_SESSION['comments']);
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
@@ -21,6 +27,7 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,8 +36,10 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa; /* Light background color */
+            background-color: #f8f9fa;
+            /* Light background color */
         }
+
         .comment-section {
             margin: 50px auto;
             max-width: 800px;
@@ -39,25 +48,29 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .comment {
             margin-bottom: 20px;
             padding: 10px;
             border: 1px solid #e0e0e0;
             border-radius: 5px;
         }
+
         .home_container {
             display: flex;
-            justify-content: space-between; 
-            align-items: center; 
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             padding: 10px;
         }
+
         .home_container img {
             width: 50px;
             height: 50px;
         }
     </style>
 </head>
+
 <body>
     <div class="home_container">
         <img id="homeImage" src="../img/accueil.png" alt="Accueil" onclick="window.location.href='index_exercices.php'">
@@ -104,7 +117,7 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
                     echo '</div>';
                 }
             }
-            
+
             ?>
         </div>
     </div>
@@ -112,4 +125,5 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

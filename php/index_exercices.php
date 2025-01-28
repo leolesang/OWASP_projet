@@ -175,7 +175,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                                 <div class="underline"></div>
                             </div>
                         </div>
-                        <button type="submit" style="">Valider</button>
+                        <button type="submit">Valider</button>
                     </form>
                 </div>
                 <div class="text-center">
@@ -345,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="">
+                    <a href="../xss_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -386,7 +386,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="">
+                    <a href="../crack_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -516,7 +516,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="">
+                    <a href="../misconfig_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -557,7 +557,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="">
+                    <a href="../csrf_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>

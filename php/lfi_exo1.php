@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 
 if ($page && file_exists($page)) {

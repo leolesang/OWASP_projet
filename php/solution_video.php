@@ -3,6 +3,14 @@
 include('config.php');
 $conn = getDbConnection();
 
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 $exercise_id = isset($_GET['id']) ? $_GET['id'] : null;
 
 if (!$exercise_id) {

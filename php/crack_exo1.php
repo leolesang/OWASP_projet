@@ -1,5 +1,11 @@
 <?php
 session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 $message = "";
 $correctAnswers = [
     "NJSWC3RAMRSSA3DBEBTG63TUMFUW4ZI=" => "jean de la fontaine",
@@ -10,7 +16,7 @@ $correctAnswers = [
 ];
 
 if (isset($_POST['reset'])) {
-    unset($_SESSION['validated']); 
+    unset($_SESSION['validated']);
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
@@ -20,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $answer = trim($_POST['answer'] ?? '');
 
     if (isset($correctAnswers[$question]) && strtolower($correctAnswers[$question]) === strtolower($answer)) {
-        $_SESSION['validated'][$question] = true; 
+        $_SESSION['validated'][$question] = true;
     } else {
         $_SESSION['validated'][$question] = false;
     }
@@ -43,6 +49,7 @@ if ($allValidated) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +61,7 @@ if ($allValidated) {
             background-color: #f8f9fa;
             color: #333;
         }
+
         .exercise-container {
             max-width: 800px;
             margin: 50px auto;
@@ -62,31 +70,37 @@ if ($allValidated) {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             padding: 30px;
         }
+
         .validated-icon {
             color: green;
             margin-left: 10px;
         }
+
         .error-icon {
             color: red;
             margin-left: 10px;
         }
+
         .disabled {
             pointer-events: none;
             opacity: 0.6;
         }
+
         .home_container {
             display: flex;
-            justify-content: space-between; 
-            align-items: center; 
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             padding: 10px;
         }
+
         .home_container img {
             width: 50px;
             height: 50px;
         }
     </style>
 </head>
+
 <body>
     <div class="home_container">
         <img id="homeImage" src="../img/accueil.png" alt="Accueil" onclick="window.location.href='index_exercices.php'">
@@ -103,18 +117,18 @@ if ($allValidated) {
                     <p><?= htmlspecialchars($question) ?></p>
                 </div>
                 <div class="mb-3 answer-input">
-                    <input 
-                        type="text" 
-                        class="form-control <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>" 
-                        name="answer" 
-                        placeholder="Type your answer here..." 
-                        <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?> 
+                    <input
+                        type="text"
+                        class="form-control <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>"
+                        name="answer"
+                        placeholder="Type your answer here..."
+                        <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>
                         required>
                 </div>
                 <input type="hidden" name="question" value="<?= htmlspecialchars($question) ?>">
-                <button 
-                    type="submit" 
-                    class="btn btn-primary <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>" 
+                <button
+                    type="submit"
+                    class="btn btn-primary <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>"
                     <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>>
                     Submit Answer
                 </button>
@@ -128,10 +142,11 @@ if ($allValidated) {
             </form>
         <?php endforeach; ?>
         <p>
-            <?php echo $message?>
+            <?php echo $message ?>
         </p>
     </div>
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

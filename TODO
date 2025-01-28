@@ -1,29 +1,7 @@
 
-
-
+- QCM sur toute les pages à faire
 - Recuperer flag pour XSS, LFI, Upload ...
-- Mettre session partout !
 - RCE ? outdated module
-- buffer overflow (terminal)
-- Systeme de niveau (challenge bloqué tant que le niv precedent est pas effectué)
-
-
-
-Exo misconfig : 
-
-- Page basique dans html code un commentaire du style /backup/
-- dans backup 2 fichier (key, config)
-- config est chiffré  
-- dechiffre config pour voir la config de la base de donnée
-- se connecte a la base avec l'identifiant trouvé et trouve le flag hash md5 ? 
-
-
-
-<?php $h0=base64_decode('T1dBU1B7QXR0ZW50aW9uX01JU0NPTkZJR30=');?>
-
-
-cle : myprivatekey1234 = NV4XA4TJOZQXIZLLMV4TCMRTGQ====== (base32)
-
-AES : 
-vHzHazb4/MjdiSjLL0U697wT/mwJuY4EWYNNtQbh65eTZmUXUBHfrg087q5gt6JE2E50j+T2P82FwtkFMrb2GLKfmd2taxZJSfiQNRiIVuc=
+- buffer overflow (terminal) bonus à voir
+- bug bouton valider sql2
 

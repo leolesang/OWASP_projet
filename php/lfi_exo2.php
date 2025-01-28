@@ -1,4 +1,13 @@
 <?php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 $file = isset($_GET['id']) ? $_GET['id'] : null;
 
 if ($file) {
@@ -7,9 +16,9 @@ if ($file) {
         header('Location: ../attack.html');
         exit;
     }
-    
+
     $file = urldecode($file);
-    
+
     // Vérification si le fichier existe
     if (file_exists($file)) {
         header('Location: ' . $file);
@@ -22,6 +31,7 @@ if ($file) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,15 +46,18 @@ if ($file) {
             padding: 100px 0;
             text-align: center;
         }
+
         .product-card {
             margin-bottom: 30px;
         }
+
         .card-img-top {
-            width:100%;
+            width: 100%;
             height: 300px;
         }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
@@ -127,4 +140,5 @@ if ($file) {
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

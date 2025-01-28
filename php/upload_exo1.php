@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+
 // Solution fichier nom.PHP.jpg
 
 $FLAG = "ATTENTIONAUBYPASS";
@@ -28,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,17 +43,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <style>
         .home_container {
             display: flex;
-            justify-content: space-between; 
-            align-items: center; 
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
             padding: 10px;
         }
+
         .home_container img {
             width: 50px;
             height: 50px;
         }
     </style>
 </head>
+
 <body>
     <div class="home_container">
         <img id="homeImage" src="../img/accueil.png" alt="Accueil" onclick="window.location.href='index_exercices.php'">
@@ -71,4 +80,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
