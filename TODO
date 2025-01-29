@@ -1,7 +1,3 @@
-
 - QCM sur toute les pages à faire
-- Recuperer flag pour XSS, LFI, Upload ...
 - RCE ? outdated module
 - buffer overflow (terminal) bonus à voir
-- bug bouton valider sql2
-

@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../sql_explication.html">
+                    <a href="../explications/sql_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -207,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../sql_explication.html">
+                    <a href="../explications/sql_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -254,7 +254,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 1" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbspeasy</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Retrouvez le flag dans le dossier lfi/flag_lfi1</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
@@ -295,7 +295,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
                     <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Retrouvez le flag dans le dossier lfi/flag_lfi2</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
@@ -345,7 +345,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../xss_explication.html">
+                    <a href="../explications/xss_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -382,11 +382,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 3" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbsp easy</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Décoder tous les codes pour avoir le flag</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../crack_explication.html">
+                    <a href="../explications/crack_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -427,11 +427,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 1" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbspeasy</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Trouvez le flag dans le fichier upload_exo1.php</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../upload_explication.html">
+                    <a href="../explications/upload_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -468,11 +468,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
                     <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Trouvez le flag dans le fichier upload_exo2.php</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../upload_explication.html">
+                    <a href="../explications/upload_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -512,11 +512,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 1" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbspeasy</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Trouvez le flag</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../misconfig_explication.html">
+                    <a href="../explications/misconfig_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>
@@ -553,11 +553,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
                     <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Essayer de faire un virement au compte "987654321"</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../csrf_explication.html">
+                    <a href="../explications/csrf_explication.html">
                         <img src="../img/explication.png" alt="Explication" style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
                 </div>

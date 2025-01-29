@@ -10,13 +10,21 @@ if (!isset($_SESSION['user_id'])) {
 
 $page = isset($_GET['page']) ? $_GET['page'] : null;
 
+$whitelist = [
+    '../lfi/flag_lfi1'
+];
+
 if ($page && file_exists($page)) {
-    header('Location: ' . $page);
-    exit;
+    if (in_array($page, $whitelist) && file_exists($page)) {
+        header('Location: ' . $page);
+        exit;
+    } else {
+        header('Location: ../attack.html');
+        exit;
+    }
+} else {
 }
 ?>
-
-
 
 <!doctype html>
 <html lang="en">

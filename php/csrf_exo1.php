@@ -17,7 +17,7 @@ if (!isset($_SESSION['balances'])) {
 
 // Générer un jeton CSRF si nécessaire
 if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+    $_SESSION['csrf_token'] = "369b7c69fc661ec54bd2c5025975b9b78568a3914b09c0cbbdaa2ad05f0c71c0";
 }
 
 $user_account = '123456789';
@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Vérification du jeton CSRF
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        echo $_SESSION['csrf_token'] . " - " . $_POST['csrf_token'];
         die("Erreur CSRF : La requête n'est pas autorisée.");
     }
 
@@ -37,6 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             '987654321' => 2000,
         ];
         $_SESSION['flag'] = null;
+        $_SESSION['csrf_token'] = "369b7c69fc661ec54bd2c5025975b9b78568a3914b09c0cbbdaa2ad05f0c71c0";
         $message = "Compte réinitialisé avec succès !";
         $current_balance = $_SESSION['balances'][$user_account];
     } else {

@@ -55,13 +55,6 @@
         function showModal(message, showValidateButton = false) {
             document.getElementById('resultMessage').innerText = message;
 
-            const validateButton = document.getElementById('validateButton');
-            if (showValidateButton) {
-                validateButton.style.display = 'inline-block';
-            } else {
-                validateButton.style.display = 'none';
-            }
-
             document.getElementById('resultModal').style.display = 'block';
         }
 

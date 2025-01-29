@@ -1,5 +1,5 @@
 <?php
-
+//%252e%252e%252flfi%252fflag_lfi2
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -7,8 +7,15 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$whitelist = [
+    '../lfi/flag_lfi1',
+    '../lfi/'
+];
 
 $file = isset($_GET['id']) ? $_GET['id'] : null;
+$whitelist = [
+    '../lfi/flag_lfi2'
+];
 
 if ($file) {
 
@@ -19,8 +26,7 @@ if ($file) {
 
     $file = urldecode($file);
 
-    // Vérification si le fichier existe
-    if (file_exists($file)) {
+    if (in_array($file, $whitelist) && file_exists($file)) {
         header('Location: ' . $file);
         exit;
     }

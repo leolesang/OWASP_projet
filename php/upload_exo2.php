@@ -6,10 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-
-// Solution fichier nom.PHP.jpg
-
-$FLAG = "ATTENTIONAUBYPASS";
+$flag = "OWASP{upload_filters}";
 
 $uploadDir = '../uploads/';
 
@@ -19,28 +16,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fileName = $_FILES['imageUpload']['name']; // Nom du fichier original
         $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-        // Extensions autorisées (validation faible)
-        $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+        // Extensions autorisées pour les images
+        $allowedImageExtensions = ['jpg', 'jpeg', 'png', 'gif'];
 
-        // Vérification basée uniquement sur l'extension dans le nom
-        if (strpos($fileName, '.php') === false && in_array($fileExtension, $allowedExtensions)) {
-            $destPath = $uploadDir . $fileName;
+        // Vérification si le fichier contient .php mais n'est pas un fichier image valide suivi de .php
+        if (strpos($fileName, '.php') !== false) {
+            // Si l'extension principale est une image et que le fichier contient aussi .php
+            $baseExtension = pathinfo($fileName, PATHINFO_EXTENSION);
+            $baseName = basename($fileName, '.' . $baseExtension); // Nom sans l'extension principale
+            $secondExtension = strtolower(pathinfo($baseName, PATHINFO_EXTENSION)); // Seconde extension
 
-            // Déplacement du fichier (sans vérification approfondie)
-            if (move_uploaded_file($fileTmpPath, $destPath)) {
-                header("Location: $destPath");
-                exit;
+            // Si la seconde extension est .php et la première est une image valide
+            if (in_array($secondExtension, $allowedImageExtensions)) {
+                $destPath = $uploadDir . $fileName;
+
+                // Déplacement du fichier
+                if (move_uploaded_file($fileTmpPath, $destPath)) {
+                    header("Location: $destPath");
+                    exit;
+                } else {
+                    $_SESSION['error'] = "Erreur lors du déplacement du fichier.";
+                }
             } else {
-                $_SESSION['error'] = "Erreur lors du déplacement du fichier.";
+                $_SESSION['error'] = "Les fichiers PHP seuls ne sont pas autorisés.";
+                header('Location: ../attack.html');
+                exit;
             }
         } else {
-            header('Location: ../attack.html');
-            exit;
+            // Si le fichier n'est pas un fichier PHP ou ne contient pas .php
+            if (in_array($fileExtension, $allowedImageExtensions)) {
+                $destPath = $uploadDir . $fileName;
+
+                // Déplacement du fichier
+                if (move_uploaded_file($fileTmpPath, $destPath)) {
+                    header("Location: $destPath");
+                    exit;
+                } else {
+                    $_SESSION['error'] = "Erreur lors du déplacement du fichier.";
+                }
+            } else {
+                $_SESSION['error'] = "Extension de fichier non autorisée.";
+                header('Location: ../attack.html');
+                exit;
+            }
         }
     } else {
         $_SESSION['error'] = "Veuillez sélectionner un fichier.";
     }
 }
+
 ?>
 
 <!DOCTYPE html>

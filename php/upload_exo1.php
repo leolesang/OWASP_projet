@@ -6,11 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-
-// Solution fichier nom.PHP.jpg
-
-$FLAG = "ATTENTIONAUBYPASS";
-
+$flag = "OWASP{upload_basique_no_filters}";
 $uploadDir = '../uploads/';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
