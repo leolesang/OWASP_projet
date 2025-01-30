@@ -16,14 +16,16 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQL Injection Vulnerabilities</title>
-    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
-            /* Light background color */
-            color: #333;
-            /* Dark text color */
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .container {
@@ -218,20 +220,11 @@ http://example.com/index.php?page=..///////..////..//////etc/passwd
             <br>
             <p>- <strong>Éviter les messages d’erreur détaillés </strong></p>
         </div>
+        <div class="text-center mt-5">
+            <button type="button" class="btn btn-primary"
+                onclick="window.location.href='qcm_lfi.php'">QCM</button>
+        </div>
     </div>
-
-    <script>
-        function simulateSQLQuery() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            const sqlQuery = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
-
-            document.getElementById('example-code').innerHTML = `<pre><code>${sqlQuery}</code></pre>`;
-        }
-    </script>
-
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

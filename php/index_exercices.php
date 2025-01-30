@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 1" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbspeasy</span>
                 </div>
-                <p class="lead" style="color: black;">Essayez d'arriver à vous authentifier.</p>
+                <p class="lead" style="color: black; font-size:17px;">Essayez d'arriver à vous authentifier.</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl3.png" alt="level 3" style="width: 30px; height: 30px;">
                     <span style="color: rgb(255, 128, 0);"> &nbsp medium</span>
                 </div>
-                <p class="lead" style="color: black;">Essayez d'arriver à vous authentifier.</p>
+                <p class="lead" style="color: black; font-size:17px;">Trouver dans quelle ville le superhéro Jean se trouve.</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
@@ -495,7 +495,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
         </div>
     </div>
 
-
+    <br>
     <div class="d-flex justify-content-center w-100 my-md-3 pl-md-3 mx-auto">
         <div class="mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden" style="border-radius: 15px; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; width: 45%;">
             <div class="my-3 py-3 position-relative">

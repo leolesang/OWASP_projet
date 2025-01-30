@@ -7,8 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$message = "";
-
 $correctAnswers = [
     "q1" => "B",
     "q2" => "D",
@@ -17,27 +15,20 @@ $correctAnswers = [
 
 if (isset($_POST['reset'])) {
     unset($_SESSION['results']);
-    header("Location: " . $_SERVER['PHP_SELF']);
+    header("Location: qcm_lfi.php");
     exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $results = [
-        'q1' => '',
-        'q2' => '',
-        'q3' => ''
-    ];
+    $results = array_fill_keys(array_keys($correctAnswers), 'incorrect');
+
+    $allowedAnswers = ['A', 'B', 'C', 'D'];
     foreach ($correctAnswers as $question => $correct_answer) {
-        if (isset($_POST[$question])) {
-            if ($_POST[$question] == $correct_answer) {
-                $results[$question] = 'correct';
-            } else {
-                $results[$question] = 'incorrect';
-            }
-        } else {
-            $results[$question] = 'incorrect';
+        if (isset($_POST[$question]) && in_array($_POST[$question], $allowedAnswers)) {
+            $results[$question] = ($_POST[$question] == $correct_answer) ? 'correct' : 'incorrect';
         }
     }
+
     $_SESSION['results'] = $results;
 }
 
@@ -50,12 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz - QCM</title>
-    <!-- Bootstrap CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
-            /* Light background color */
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
         }
 
         .quiz-container {
@@ -129,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 </div>
             </div>
-
+            <br>
             <div class="question">
                 <p><strong>2. Quel type de requête SQL est le plus vulnérable aux injections SQL ?</strong>
                     <?php if (isset($_SESSION['results']['q2']) && $_SESSION['results']['q2'] == 'correct') echo '<span class="text-success">✔️</span>'; ?>
@@ -152,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label class="form-check-label" for="q2d">Toutes les requêtes ci-dessus peuvent être vulnérables.</label>
                 </div>
             </div>
-
+            <br>
             <div class="question">
                 <p><strong>3. Quelle est la meilleure pratique pour prévenir les injections SQL ?</strong>
                     <?php if (isset($_SESSION['results']['q3']) && $_SESSION['results']['q3'] == 'correct') echo '<span class="text-success">✔️</span>'; ?>
