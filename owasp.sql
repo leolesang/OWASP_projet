@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 24 jan. 2025 à 16:15
+-- Généré le : ven. 31 jan. 2025 à 16:30
 -- Version du serveur : 9.1.0
 -- Version de PHP : 8.3.14
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `exercices` (
   `lien` varchar(500) DEFAULT NULL,
   `flag` varchar(200) NOT NULL,
   PRIMARY KEY (`id_exercice`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `exercices`
@@ -50,7 +50,8 @@ INSERT INTO `exercices` (`id_exercice`, `niveau`, `lien`, `flag`) VALUES
 (7, 1, '/', 'OWASP{upload_basique_no_filters}'),
 (8, 2, '/', 'OWASP{upload_filters}'),
 (9, 1, '/', 'OWASP{Attention_MISCONFIG}'),
-(10, 2, '/', 'OWASP{CSRF_token}');
+(10, 2, '/', 'OWASP{CSRF_token}'),
+(11, 1, '/', 'OWASP{Insecure_Deserialization}');
 
 -- --------------------------------------------------------
 
