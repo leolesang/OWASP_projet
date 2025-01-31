@@ -54,50 +54,57 @@ if ($allValidated) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercise 1 - Question 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-        }
+    body {
+        font-family: "Inter", serif;
+        font-optical-sizing: auto;
+        font-weight: 300;
+        font-style: normal;
+    }
 
-        .exercise-container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
+    .exercise-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
 
-        .validated-icon {
-            color: green;
-            margin-left: 10px;
-        }
+    .validated-icon {
+        color: green;
+        margin-left: 10px;
+    }
 
-        .error-icon {
-            color: red;
-            margin-left: 10px;
-        }
+    .error-icon {
+        color: red;
+        margin-left: 10px;
+    }
 
-        .disabled {
-            pointer-events: none;
-            opacity: 0.6;
-        }
+    .disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
 
-        .home_container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 10px;
-        }
+    .home_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+    }
 
-        .home_container img {
-            width: 50px;
-            height: 50px;
-        }
+    .home_container img {
+        width: 50px;
+        height: 50px;
+    }
     </style>
 </head>
 
@@ -112,34 +119,31 @@ if ($allValidated) {
         </form>
         <br>
         <?php foreach ($correctAnswers as $question => $correctAnswer): ?>
-            <form method="POST" class="mb-4">
-                <div class="question">
-                    <p><?= htmlspecialchars($question) ?></p>
-                </div>
-                <div class="mb-3 answer-input">
-                    <input
-                        type="text"
-                        class="form-control <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>"
-                        name="answer"
-                        placeholder="Type your answer here..."
-                        <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>
-                        required>
-                </div>
-                <input type="hidden" name="question" value="<?= htmlspecialchars($question) ?>">
-                <button
-                    type="submit"
-                    class="btn btn-primary <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>"
-                    <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>>
-                    Submit Answer
-                </button>
-                <?php if (isset($_SESSION['validated'][$question])): ?>
-                    <?php if ($_SESSION['validated'][$question]): ?>
-                        <span class="validated-icon">✔️</span>
-                    <?php else: ?>
-                        <span class="error-icon">❌</span>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </form>
+        <form method="POST" class="mb-4">
+            <div class="question">
+                <p><?= htmlspecialchars($question) ?></p>
+            </div>
+            <div class="mb-3 answer-input">
+                <input type="text"
+                    class="form-control <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>"
+                    name="answer" placeholder="Type your answer here..."
+                    <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>
+                    required>
+            </div>
+            <input type="hidden" name="question" value="<?= htmlspecialchars($question) ?>">
+            <button type="submit"
+                class="btn btn-primary <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>"
+                <?= isset($_SESSION['validated'][$question]) && $_SESSION['validated'][$question] ? 'disabled' : '' ?>>
+                Submit Answer
+            </button>
+            <?php if (isset($_SESSION['validated'][$question])): ?>
+            <?php if ($_SESSION['validated'][$question]): ?>
+            <span class="validated-icon">✔️</span>
+            <?php else: ?>
+            <span class="error-icon">❌</span>
+            <?php endif; ?>
+            <?php endif; ?>
+        </form>
         <?php endforeach; ?>
         <p>
             <?php echo $message ?>
