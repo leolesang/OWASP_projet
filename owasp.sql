@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 31 jan. 2025 à 16:30
--- Version du serveur : 9.1.0
--- Version de PHP : 8.3.14
+-- Généré le : lun. 03 fév. 2025 à 17:53
+-- Version du serveur : 8.0.40
+-- Version de PHP : 8.1.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `exercices` (
   `lien` varchar(500) DEFAULT NULL,
   `flag` varchar(200) NOT NULL,
   PRIMARY KEY (`id_exercice`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `exercices`
@@ -51,7 +51,9 @@ INSERT INTO `exercices` (`id_exercice`, `niveau`, `lien`, `flag`) VALUES
 (8, 2, '/', 'OWASP{upload_filters}'),
 (9, 1, '/', 'OWASP{Attention_MISCONFIG}'),
 (10, 2, '/', 'OWASP{CSRF_token}'),
-(11, 1, '/', 'OWASP{Insecure_Deserialization}');
+(11, 1, '/', 'OWASP{Insecure_Deserialization}'),
+(12, 1, '/', 'OWASP{JWT_HACKED_LEVEL_1}'),
+(13, 2, '/', 'OWASP{JWT_HACKED_LEVEL_2}');
 
 -- --------------------------------------------------------
 
