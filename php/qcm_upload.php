@@ -16,7 +16,7 @@ $correctAnswers = [
 
 if (isset($_POST['reset'])) {
     unset($_SESSION['results']);
-    header(header: "Location: qcm_upload.php");
+    header("Location: qcm_upload.php");
     exit;
 }
 

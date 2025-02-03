@@ -143,7 +143,6 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_balance') {
             <label for="amount" class="form-label">Montant à transférer :</label>
             <input type="number" name="amount" id="amount" class="form-control" min="1" max="<?php echo $current_balance; ?>" required>
         </div>
-        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
         <button disabled type="submit" class="btn btn-primary w-100" <?php echo ($current_balance <= 0) ? 'disabled' : ''; ?>>Transférer</button>
 
         <?php if (isset($message)) { ?>

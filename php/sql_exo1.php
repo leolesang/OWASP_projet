@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $conn = getDbConnection();
-
+$message = "";
 
 $_SESSION['challenge_success'] = false;
 
@@ -24,7 +24,7 @@ function containsForbiddenWords($input)
     return false;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if (isset($_POST['login']) || isset($_POST['password'])) {
     $login = isset($_POST['login']) ? trim($_POST['login']) : null;
     $password = isset($_POST['password']) ? trim($_POST['password']) : null;
 

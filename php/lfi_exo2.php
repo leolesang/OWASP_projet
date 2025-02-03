@@ -7,11 +7,6 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$whitelist = [
-    '../lfi/flag_lfi1',
-    '../lfi/'
-];
-
 $file = isset($_GET['id']) ? $_GET['id'] : null;
 $whitelist = [
     '../lfi/flag_lfi2'

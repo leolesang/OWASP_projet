@@ -15,7 +15,7 @@ $correctAnswers = [
 
 if (isset($_POST['reset'])) {
     unset($_SESSION['results']);
-    header("Location: qcm_lfi.php");
+    header("Location: qcm_sql.php");
     exit;
 }
 
@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <br>
             <div class="question">
-                <p><strong>2. Quel type de requête SQL est le plus vulnérable aux injections SQL ?</strong>
+                <p><strong>2. Quel(s) type(s) est le plus vulnérable aux injections SQL ?</strong>
                     <?php if (isset($_SESSION['results']['q2']) && $_SESSION['results']['q2'] == 'correct') echo '<span class="text-success">✔️</span>'; ?>
                     <?php if (isset($_SESSION['results']['q2']) && $_SESSION['results']['q2'] == 'incorrect') echo '<span class="text-danger">❌</span>'; ?>
                 </p>

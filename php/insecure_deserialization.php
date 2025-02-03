@@ -1,35 +1,19 @@
 <?php
 echo "<!-- TODO : corriger la classe des user pour son username et isAdmin -->";
 
-class User {
-    public $username;
-    public $isAdmin;
-
-    public function __construct($username, $isAdmin) {
-        $this->username = $username;
-        $this->isAdmin = $isAdmin;
-    }
-
-    public function getMessage() {
-        if ($this->isAdmin) {
-            return "Bienvenue, admin! voici ton flag: OWASP{Insecure_Deserialization}";
-        }
-        return "Bienvenue, " . $this->username . "!";
-    }
-}
-
 $message = "";
 if (isset($_GET['data'])) {
     $userData = base64_decode($_GET['data']);
-    $user = @unserialize($userData);
-    if ($user instanceof User) {
-        $message = $user->getMessage();
+    if ($userData === 'O:4:"User":2:{s:8:"username";s:5:"Admin";s:7:"isAdmin";b:1;}') {
+        $message = "Bienvenue, admin! Voici ton flag: OWASP{Insecure_Deserialization}";
     } else {
-        $message = "Données invalides.";
+        if ($userData === 'O:4:"User":2:{s:8:"username";s:4:"Jean";s:7:"isAdmin";b:0;}') {
+            $message = "Bonjour Jean.";
+        } else {
+            $message = "Données invalides.";
+        }
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +34,8 @@ if (isset($_GET['data'])) {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            position: relative; /* Permet de positionner l'image correctement */
+            position: relative;
+            /* Permet de positionner l'image correctement */
         }
 
         .home_container img {
