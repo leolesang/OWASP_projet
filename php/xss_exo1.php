@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
+$message = "";
 
 if (isset($_POST['reset'])) {
     unset($_SESSION['comments']);
@@ -22,6 +23,10 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
         "comment" => $_GET['comment']
     ];
     array_push($_SESSION['comments'], $new_comment);
+
+    if (str_contains($_GET['comment'], "document.cookie") && str_contains($_GET['comment'], "fetch")) {
+        $message = "<strong>Voici le flag bien joué OWASP{xss_stored_basique}</strong>";
+    }
 }
 ?>
 
@@ -78,6 +83,11 @@ if (isset($_GET['comment']) && isset($_GET['name'])) {
     <div class="container">
         <div class="comment-section">
             <h2 class="mb-4">Leave a Comment</h2>
+            <?php
+            if ($message) {
+                echo $message;
+            }
+            ?>
             <form method="GET">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>

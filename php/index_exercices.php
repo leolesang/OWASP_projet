@@ -376,7 +376,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 1" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbspeasy</span>
                 </div>
-                <p class="lead" style="color: black;">...</p>
+                <p class="lead" style="color: black;">Simuler la récupèration des cookies</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
@@ -732,7 +732,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../explications/jwt.html">
+                    <a href="../explications/jwt_explication.html">
                         <img src="../img/explication.png" alt="Explication"
                             style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
@@ -783,7 +783,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
-                    <a href="../explications/jwt.html">
+                    <a href="../explications/jwt_explication.html">
                         <img src="../img/explication.png" alt="Explication"
                             style="width: 60px; height: 60px; border-radius: 8px;">
                     </a>
