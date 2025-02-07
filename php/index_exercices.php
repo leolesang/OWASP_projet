@@ -295,7 +295,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=1">
+                    <a href="solution_video.php?id=3">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -344,7 +344,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=2">
+                    <a href="solution_video.php?id=4">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -398,7 +398,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=1">
+                    <a href="solution_video.php?id=5">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -447,7 +447,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=2">
+                    <a href="solution_video.php?id=6">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -500,7 +500,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=1">
+                    <a href="solution_video.php?id=7">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -549,7 +549,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=2">
+                    <a href="solution_video.php?id=8">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -601,7 +601,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=1">
+                    <a href="solution_video.php?id=9">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -650,7 +650,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=2">
+                    <a href="solution_video.php?id=10">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -701,7 +701,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=1">
+                    <a href="solution_video.php?id=11">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -750,7 +750,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=2">
+                    <a href="solution_video.php?id=12">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -801,7 +801,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=1">
+                    <a href="solution_video.php?id=13">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>
@@ -850,7 +850,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     </form>
                 </div>
                 <div class="text-center">
-                    <a href="solution_video.php?id=2">
+                    <a href="solution_video.php?id=14">
                         <img src="../img/solution.png" alt="Solution"
                             style="width: 60px; height: 60px; border-radius: 8px; margin-bottom: 20px;">
                     </a>

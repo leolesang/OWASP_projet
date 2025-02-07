@@ -11,7 +11,8 @@
     <h1>Page malveillante</h1>
     <p>Pour un attaquant il pourrait lancer le formulaire instantanément
     </p>
-    <form action="php/csrf_exo1.php" method="POST" id="csrfForm">
+    <!-- Ici attention au lien action, si sur docker ne marche pas alors upload le fichier dans le container pour avoir le bon lien action. -->
+    <form action="../php/csrf_exo1.php" method="POST" id="csrfForm">
         <input type="hidden" name="to_account" value="987654321">
         <input type="hidden" name="amount" value="3000">
         <input type="hidden" name="csrf_token" value="369b7c69fc661ec54bd2c5025975b9b78568a3914b09c0cbbdaa2ad05f0c71c0">

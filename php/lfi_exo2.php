@@ -1,5 +1,4 @@
 <?php
-//%252e%252e%252flfi%252fflag_lfi2
 session_start();
 
 if (!isset($_SESSION['user_id'])) {
@@ -22,7 +21,7 @@ if ($file) {
     $file = urldecode($file);
 
     if (in_array($file, $whitelist) && file_exists($file)) {
-        header('Location: ' . $file);
+        include($file);
         exit;
     }
 }

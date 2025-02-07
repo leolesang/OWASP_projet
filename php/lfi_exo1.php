@@ -16,7 +16,7 @@ $whitelist = [
 
 if ($page && file_exists($page)) {
     if (in_array($page, $whitelist) && file_exists($page)) {
-        header('Location: ' . $page);
+        include($page);
         exit;
     } else {
         header('Location: ../attack.html');

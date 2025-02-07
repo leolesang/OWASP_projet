@@ -149,7 +149,7 @@ if (isset($_GET['action']) && $_GET['action'] === 'get_balance') {
             <p class="message text-center mt-3"><?php echo $message; ?></p>
         <?php } ?>
 
-        <?php if ($_SESSION['flag']) { ?>
+        <?php if (isset($_SESSION['flag'])) { ?>
             <p class="error text-center mt-3"><?php echo $_SESSION['flag']; ?></p>
         <?php } ?>
     </div>

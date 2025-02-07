@@ -1,1 +1,9 @@
-Deny from all
+<Files "flag_lfi1">
+  Order Deny,Allow
+  Deny from all
+</Files>
+
+<Files "flag_lfi2">
+  Order Deny,Allow
+  Deny from all
+</Files>
