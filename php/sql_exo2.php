@@ -15,7 +15,7 @@ $_SESSION['challenge_success'] = false;
 
 function containsForbiddenWords($input)
 {
-    $forbidden_words = ['UPDATE', 'INSERT', 'DELETE'];
+    $forbidden_words = ['UPDATE', 'INSERT', 'DELETE', 'exercices', 'user', 'exo1_sql', 'validation'];
     foreach ($forbidden_words as $word) {
         if (stripos($input, $word) !== false) {
             return true;
