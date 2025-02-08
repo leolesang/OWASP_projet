@@ -819,16 +819,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/croix.png" alt="Non validé"
                         style="position: absolute; top: 0px; left: 10px; width: 60px; height: 60px;">
                 <?php endif; ?>
-                <a href="jwt_exo1.php">
+                <a href="injection_command.php">
                     <img src="../img/demarrer2.png" alt="Démarrer l'exercice"
                         style="position: absolute; top: 10px; right: 10px; width: 60px; height: 60px;">
                 </a>
                 <div class="d-flex justify-content-center align-items-center">
-                    <h2 class="display-5" style="color: black; margin-right: 10px;">...</h2>
-                    <img src="../img/lvl1.png" alt="level 3" style="width: 30px; height: 30px;">
-                    <span style="color: rgb(69, 251, 14);"> &nbsp easy</span>
+                    <h2 class="display-5" style="color: black; margin-right: 10px;">Injection command</h2>
+                    <img src="../img/lvl5.png" alt="level 3" style="width: 30px; height: 30px;">
+                    <span style="color: rgb(255, 0, 0);"> &nbsp hard</span>
                 </div>
-                <p class="lead" style="color: black;">Tu dois passer admin !</p>
+                <p class="lead" style="color: black;">Trouve le flag dans le fichier injection_command.php</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
