@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 10 fév. 2025 à 17:14
+-- Généré le : lun. 10 fév. 2025 à 21:50
 -- Version du serveur : 8.0.40
 -- Version de PHP : 8.1.0
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `exercices` (
   `lien` varchar(500) DEFAULT NULL,
   `flag` varchar(200) NOT NULL,
   PRIMARY KEY (`id_exercice`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Déchargement des données de la table `exercices`
@@ -55,7 +55,8 @@ INSERT INTO `exercices` (`id_exercice`, `niveau`, `lien`, `flag`) VALUES
 (12, 1, 'https://www.youtube.com/embed/lam_lUMMM9s?si=oVvUtAJ4Ucaw0nFJ', 'OWASP{JWT_HACKED_LEVEL_1}'),
 (13, 2, 'https://www.youtube.com/embed/bhqDZBAGtuU?si=-V54X1x2dp0i8Sek', 'OWASP{JWT_HACKED_LEVEL_2}'),
 (14, 3, 'https://www.youtube.com/embed/V-CrEi_9KBI?si=VIkJrsWADyNEErfA', 'OWASP{INJECTION_BYPASS_HARD}'),
-(15, 2, 'https://www.youtube.com/embed/-OyDD1bJqZ8?si=ufSH4PCcS9ORqctm', 'OWASP{OUT_DATED_module}');
+(15, 2, 'https://www.youtube.com/embed/-OyDD1bJqZ8?si=ufSH4PCcS9ORqctm', 'OWASP{OUT_DATED_module}'),
+(16, 1, 'https://www.youtube.com/embed/7cIuN5HIrso?si=iTf5zIFdLyqdhrxc', 'OWASP{PRIV_ESC_SUDO}');
 
 -- --------------------------------------------------------
 
@@ -146,6 +147,7 @@ INSERT INTO `validation` (`id_user`, `id_exercice`) VALUES
 (1, 2),
 (1, 8),
 (1, 9),
+(1, 15),
 (4, 8),
 (4, 10);
 COMMIT;
