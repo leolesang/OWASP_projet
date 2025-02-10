@@ -1,0 +1,4 @@
+<Files "flag_lfi1">
+  Order Deny,Allow
+  Deny from all
+</Files>

