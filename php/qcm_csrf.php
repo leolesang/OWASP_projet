@@ -16,7 +16,7 @@ $correctAnswers = [
 
 if (isset($_POST['reset'])) {
     unset($_SESSION['results']);
-    header(header: "Location: qcm_csrf.php");
+    header("Location: qcm_csrf.php");
     exit;
 }
 
@@ -49,43 +49,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-    body {
-        font-family: "Inter", serif;
-        font-optical-sizing: auto;
-        font-weight: 300;
-        font-style: normal;
-    }
+        body {
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
 
-    .quiz-container {
-        max-width: 600px;
-        margin: 50px auto;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-    }
+        .quiz-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
 
-    .question {
-        margin-top: 20px;
-        font-size: 1.2rem;
-    }
+        .question {
+            margin-top: 20px;
+            font-size: 1.2rem;
+        }
 
-    .answer-option {
-        margin: 10px 0;
-    }
+        .answer-option {
+            margin: 10px 0;
+        }
 
-    .home_container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        padding: 10px;
-    }
+        .home_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px;
+        }
 
-    .home_container img {
-        width: 50px;
-        height: 50px;
-    }
+        .home_container img {
+            width: 50px;
+            height: 50px;
+        }
     </style>
 </head>
 

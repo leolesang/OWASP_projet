@@ -46,20 +46,32 @@ $conn->close();
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 
     <!-- Custom styles for this template -->
     <link href="../css/product.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+        }
+    </style>
 </head>
 
 <body>
 
     <nav class="site-header sticky-top py-1">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2" href="index.html">
+            <a class="py-2" href="index_exercices.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     class="d-block mx-auto">
