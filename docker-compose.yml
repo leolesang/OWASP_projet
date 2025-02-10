@@ -14,6 +14,7 @@ services:
       - exo8
       - exo14
       - exo15
+      - exo16
       - db
     networks:
       - frontend
@@ -73,6 +74,20 @@ services:
     networks:
       - frontend
     restart: always
+    
+  exo16:
+    image: nyull/exo16:latest
+    container_name: exo16
+    ports:
+      - "80:80"
+    networks:
+      - frontend
+      - db_network
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - php_sessions:/var/lib/php/sessions
 
   db:
     image: mysql:8.0
