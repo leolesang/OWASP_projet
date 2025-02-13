@@ -92,9 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
     <title>Page exercices</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/product.css" rel="stylesheet">
-    <link href="../css/button_valider.css" rel="stylesheet">
-    <link href="../css/flag_input.css" rel="stylesheet">
+    <link href="/css/product.css" rel="stylesheet">
+    <link href="/css/button_valider.css" rel="stylesheet">
+    <link href="/css/flag_input.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                         style="position: absolute; top: 0px; left: 10px; width: 60px; height: 60px;">
                 <?php endif; ?>
 
-                <a href="../sql_exo1.html">
+                <a href="/exo1/sql_exo1.html">
                     <img src="../img/demarrer2.png" alt="Démarrer l'exercice"
                         style="position: absolute; top: 10px; right: 10px; width: 60px; height: 60px;">
                 </a>
@@ -202,7 +202,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                         style="position: absolute; top: 0px; left: 10px; width: 60px; height: 60px;">
                 <?php endif; ?>
 
-                <a href="../sql_exo2.html">
+                <a href="/exo2/sql_exo2.html">
                     <img src="../img/demarrer2.png" alt="Démarrer l'exercice"
                         style="position: absolute; top: 10px; right: 10px; width: 60px; height: 60px;">
                 </a>
@@ -921,7 +921,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['flag']) && isset($_GET[
                     <img src="../img/lvl1.png" alt="level 3" style="width: 30px; height: 30px;">
                     <span style="color: rgb(69, 251, 14);"> &nbsp easy</span>
                 </div>
-                <p class="lead" style="color: black;">Exploiter un reverse shell</p>
+                <p class="lead" style="color: black;">Trouver le flag dans /root</p>
             </div>
             <div class="d-flex justify-content-between mt-4">
                 <div class="text-center">
