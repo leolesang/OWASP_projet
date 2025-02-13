@@ -2,13 +2,6 @@
 
 Ce projet est une plateforme pédagogique permettant aux étudiants de s'exercer sur des vulnérabilités web courantes, comme l'injection SQL, XSS, etc. Les exercices sont classés par niveau de difficulté le but étant de récupérer des flags pour valider les exercices.
 
-## **Table des matières**
-
-1. [Description](#description)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [Technologies](#technologies)
-
 ## **🚀 Description**
 
 Chaque exercice simule une vulnérabilité différente de l'OWASP Top 10 et permet aux utilisateurs de tester leurs compétences en exploitation de failles. L'étudiant peut avant de d'exercer apprendre les vulnérabilités sur les pages explications, un qcm est mit à disposition pour chaque type d'exercice. Si l'étudiant est bloqué il peut alors regarder la solution de l'exercice.
@@ -49,11 +42,13 @@ Une fois l'installation terminée, voici comment utiliser le projet.
 
 ## **📂 Structure du Projet**
 
+```plaintext
 OWASP_projet/
 ├──  docker-compose.yml # Docker-compose pour le lancement du projet
 ├──  nginx.conf # Reverse-proxy
 ├──  owasp.sql # Base de données
-└── README.md            
+└── README.md
+```         
 
 ## **🛠 Technologies**
 
