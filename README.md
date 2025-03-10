@@ -45,8 +45,6 @@ Une fois l'installation terminée, voici comment utiliser le projet.
 ```plaintext
 OWASP_projet/
 ├──  docker-compose.yml # Docker-compose pour le lancement du projet
-├──  nginx.conf # Reverse-proxy
-├──  owasp.sql # Base de données
 └── README.md            
 ```
 
