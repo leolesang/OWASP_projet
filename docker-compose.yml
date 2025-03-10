@@ -2,12 +2,10 @@ version: '3.8'
 
 services:
   reverse-proxy:
-    image: nginx:latest
+    image: nyull/nginx-custom:latest
     container_name: reverse-proxy
     ports:
       - "8080:80"
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
       - portail
       - exo7
@@ -90,7 +88,7 @@ services:
       - php_sessions:/var/lib/php/sessions
 
   db:
-    image: mysql:8.0
+    image: nyull/mysql-owasp:latest
     container_name: mysql_container
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -98,7 +96,6 @@ services:
       MYSQL_ROOT_HOST: '%'
     volumes:
       - db_data:/var/lib/mysql
-      - ./owasp.sql:/docker-entrypoint-initdb.d/owasp.sql
     networks:
       - db_network
 
